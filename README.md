@@ -1,4 +1,4 @@
-# Module name
+# Huawei Cloud VPC
 <!-- BEGIN_TF_DOCS -->
 ## Requirements
 
