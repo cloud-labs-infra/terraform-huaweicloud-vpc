@@ -1,0 +1,61 @@
+name: 'Terraform'
+
+env:
+  tf_version: 1.4.4
+
+on:
+  pull_request:
+    paths:
+      - '*.tf'
+      - '**/*.tpl'
+
+jobs:
+  linters:
+    name: 'Linters'
+    runs-on: ubuntu-20.04
+    steps:
+      - name: 'Checkout'
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - name: 'Setup Terraform'
+        uses: hashicorp/setup-terraform@v2
+        with:
+          terraform_version: ${{ env.tf_version }}
+          terraform_wrapper: false
+      - name: 'Format'
+        id: fmt
+        continue-on-error: false
+        run: |          
+          echo "::notice::Executing 'terraform fmt' for the module"
+          if [ $(terraform fmt -check --list=true -diff=true -write=false | tee fmt-issues | wc -c) -ne 0 ]; then
+            echo "::error::Terraform module has to be formatted!"
+            echo "::error::Apply 'terraform fmt' to the module to fix the formatting issues:"
+            cat fmt-issues
+            exit 1
+          else
+            echo "::notice::Terraform module does not have any formatting issues"
+          fi
+      - name: 'Validate'
+        id: validate
+        continue-on-error: false
+        run: |
+          echo "::notice::Executing 'terraform init && terraform validate' to the module"
+          terraform init -input=false && terraform validate
+
+  docs:
+    name: 'Docs'
+    runs-on: ubuntu-20.04
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          ref: ${{ github.event.pull_request.head.ref }}
+      - name: 'Render terraform docs and push changes back to PR'
+        uses: terraform-docs/gh-actions@v1
+        with:
+          working-dir: .
+          output-file: README.md
+          output-method: inject
+          git-push: "true"
