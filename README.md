@@ -65,8 +65,10 @@ No modules.
 
 | Name | Description |
 |------|-------------|
+| <a name="output_private_subnets_cidrs"></a> [private\_subnets\_cidrs](#output\_private\_subnets\_cidrs) | List of CIDRs of Private Subnets |
 | <a name="output_private_subnets_ids"></a> [private\_subnets\_ids](#output\_private\_subnets\_ids) | List of IDs of Private Subnets in UUID format |
 | <a name="output_private_subnets_subnet_ids"></a> [private\_subnets\_subnet\_ids](#output\_private\_subnets\_subnet\_ids) | List of IDs of the IPv4 subnet (Native OpenStack API) |
+| <a name="output_public_subnets_cidrs"></a> [public\_subnets\_cidrs](#output\_public\_subnets\_cidrs) | List of CIDRs of Public Subnets |
 | <a name="output_public_subnets_ids"></a> [public\_subnets\_ids](#output\_public\_subnets\_ids) | List of IDs of Public Subnets in UUID format |
 | <a name="output_public_subnets_subnet_ids"></a> [public\_subnets\_subnet\_ids](#output\_public\_subnets\_subnet\_ids) | List of IDs of the IPv4 subnet (Native OpenStack API) |
 | <a name="output_vpc_cidr"></a> [vpc\_cidr](#output\_vpc\_cidr) | The CIDR of the VPC |
