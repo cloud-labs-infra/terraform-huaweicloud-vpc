@@ -13,19 +13,29 @@ output "vpc_cidr" {
   value       = huaweicloud_vpc.main.cidr
 }
 
+output "private_subnets_cidrs" {
+  description = "List of CIDRs of Private Subnets"
+  value       = huaweicloud_vpc_subnet.private.*.cidr
+}
+
+output "public_subnets_cidrs" {
+  description = "List of CIDRs of Public Subnets"
+  value       = huaweicloud_vpc_subnet.public.*.cidr
+}
+
 output "private_subnets_ids" {
   description = "List of IDs of Private Subnets in UUID format"
   value       = huaweicloud_vpc_subnet.private.*.id
 }
 
-output "private_subnets_subnet_ids" {
-  description = "List of IDs of the IPv4 subnet (Native OpenStack API)"
-  value       = huaweicloud_vpc_subnet.private.*.subnet_id
-}
-
 output "public_subnets_ids" {
   description = "List of IDs of Public Subnets in UUID format"
   value       = huaweicloud_vpc_subnet.public.*.id
+}
+
+output "private_subnets_subnet_ids" {
+  description = "List of IDs of the IPv4 subnet (Native OpenStack API)"
+  value       = huaweicloud_vpc_subnet.private.*.subnet_id
 }
 
 output "public_subnets_subnet_ids" {
