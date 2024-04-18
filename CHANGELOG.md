@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.3.0](https://github.com/cloud-labs-infra/terraform-huaweicloud-vpc/compare/v1.2.0...v1.3.0) (2024-04-18)
+
+
+### Features
+
+* Update version of tf and providers ([#8](https://github.com/cloud-labs-infra/terraform-huaweicloud-vpc/issues/8)) ([c493673](https://github.com/cloud-labs-infra/terraform-huaweicloud-vpc/commit/c49367366716357fb8c489970149d2022f08209d))
+
 ## [1.2.0](https://github.com/cloud-labs-infra/terraform-huaweicloud-vpc/compare/v1.1.0...v1.2.0) (2023-05-04)
 
 
