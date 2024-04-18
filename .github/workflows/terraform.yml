@@ -1,7 +1,7 @@
 name: 'Terraform'
 
 env:
-  tf_version: 1.4.4
+  tf_version: 1.7.5
 
 on:
   pull_request:
